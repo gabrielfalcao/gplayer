@@ -1,5 +1,9 @@
 #!/bin/bash
 
+if [ -z $VIRTUAL_ENV ]; then
+    echo "Please run this script inside of a virtual env with the future name of your application"
+    exit 1
+fi;
 
 printf "Welcome to \033[1;32mBong\033[0m, \n"
 printf "the best kinda Flask you could "
@@ -25,15 +29,19 @@ while [ "$yesno" != "y" ]; do
     fi;
 done
 
-easy_install virtualenvwrapper
-mkvirtualenv $ApplicationName
-
 easy_install curdling
 curd install -r development.txt
 
 ./rename-inline.sh Bong $ApplicationName
-
+mv bong `printf $ApplicationName | tr '[:upper:]' '[:lower:]'`
+git add `printf $ApplicationName | tr '[:upper:]' '[:lower:]'`
 # Commit if still using git
 if [ -e ".git" ]; then
-    git commit -am "Creating $ApplicationName with Bong"
+    git rm -f install-wizard.sh
+    git rm -f rename-inline.sh
+
+    git commit -am "Creating $ApplicationName with Bong <http://github.com/weedlabs/bong>"
 fi;
+
+printf "Cool, now try running \033[1;32mmake unit\033[0m or "
+printf "\033[1;32mmake functional\033[0m\n"
