@@ -1,11 +1,11 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# Copyright © 2013 Bong LLC
+# Copyright © 2013 GPlayer LLC
 #
 import json
 from datetime import datetime, date, time
 
-from bong.framework.formats.json import json_converter, loads, dumps
+from gplayer.framework.formats.json import json_converter, loads, dumps
 
 
 

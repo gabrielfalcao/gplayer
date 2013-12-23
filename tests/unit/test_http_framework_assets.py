@@ -1,13 +1,13 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# Copyright © 2013 Bong LLC
+# Copyright © 2013 GPlayer LLC
 #
 from __future__ import unicode_literals
 from mock import patch, Mock
-from bong.framework.http.assets import AssetsManager
+from gplayer.framework.http.assets import AssetsManager
 
 
-@patch('bong.framework.http.assets.Environment')
+@patch('gplayer.framework.http.assets.Environment')
 def test_assets_manager(Environment):
     ("AssetsManager should have a flask assets Environment "
      "setup upon instantiation")

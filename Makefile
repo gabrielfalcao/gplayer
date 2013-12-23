@@ -29,7 +29,7 @@ check:
 
 
 local-migrate-forward:
-	@[ "$(reset)" == "yes" ] && echo "drop database bong;create database bong" | mysql -uroot || echo "Running new migrations..."
+	@[ "$(reset)" == "yes" ] && echo "drop database gplayer;create database gplayer" | mysql -uroot || echo "Running new migrations..."
 	@alembic upgrade head
 
 migrate-forward:
@@ -40,9 +40,23 @@ local-migrate-back:
 	@alembic downgrade -1
 
 db:
-	@echo "drop database if exists bong ;create database bong" | mysql -uroot
+	@echo "drop database if exists gplayer ;create database gplayer" | mysql -uroot
 	python manage.py db
 
 docs:
 	markment -t .theme spec
 	open "`pwd`/_public/index.html"
+
+static:
+	bower install
+	@mkdir -p gplayer/static/{js,css,fonts}
+
+	cp bower_components/angular/angular.min.js.map         gplayer/static/js
+	cp bower_components/angular/angular.min.js             gplayer/static/js
+	cp bower_components/jquery/jquery.min.js               gplayer/static/js
+	cp bower_components/jquery/jquery.min.map              gplayer/static/js
+	cp bower_components/bootstrap/dist/js/bootstrap.min.js gplayer/static/js
+
+	cp bower_components/bootstrap/dist/fonts/*             gplayer/static/fonts
+
+	cp bower_components/bootstrap/dist/css/*.min.css       gplayer/static/css

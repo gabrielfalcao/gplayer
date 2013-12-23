@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# Copyright © 2013 Bong LLC
+# Copyright © 2013 GPlayer LLC
 #
 from __future__ import unicode_literals
 import sys
@@ -9,10 +9,10 @@ from plant import Node
 from mock import MagicMock
 from StringIO import StringIO
 from flask import Blueprint
-from bong.server import application
-from bong.framework.core import Application
-from bong.framework.core import ErrorHandlers
-from bong.framework.commands.testing import RunTest
+from gplayer.server import application
+from gplayer.framework.core import Application
+from gplayer.framework.core import ErrorHandlers
+from gplayer.framework.commands.testing import RunTest
 
 this_file = Node(__file__)
 this_folder = this_file.parent

@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# Copyright © 2013 Bong LLC
+# Copyright © 2013 GPlayer LLC
 #
 from __future__ import unicode_literals
 
@@ -11,8 +11,8 @@ from datetime import datetime
 from sure import scenario
 from freezegun import freeze_time
 
-from bong.server import application
-from bong.framework.db import metadata, engine, Model, get_redis_connection
+from gplayer.server import application
+from gplayer.framework.db import metadata, engine, Model, get_redis_connection
 
 
 time_frozen = freeze_time("2002-04-20 04:20:00")
@@ -47,13 +47,13 @@ def prepare_db(context):
 specification = scenario([prepare_app, prepare_db])
 
 def api_specification(role_name, email='foo@bar.com', password='123'):
-    from bong.api.models import User
+    from gplayer.api.models import User
     def prepare_token(context):
         context.user = User.create(email=email, password=password)
         context.user.created_at = datetime(2002, 4, 20, 4, 20)
         context.user.save()
         context.user.roles.add(role_name)
         context.token = context.user.generate_token()
-        context.headers = {'X-Bong-Token': context.token}
+        context.headers = {'X-GPlayer-Token': context.token}
 
     return scenario([prepare_app, prepare_db, prepare_token])

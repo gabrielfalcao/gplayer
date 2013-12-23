@@ -4,7 +4,7 @@ import httpretty
 from .base import specification, User
 from datetime import datetime, date, time
 from decimal import Decimal
-from bong.framework.db import (
+from gplayer.framework.db import (
     Model, db, MetaData,
     InvalidModelDeclaration,
     InvalidColumnName,
