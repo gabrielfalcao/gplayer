@@ -14,19 +14,10 @@ and functional tests; ready for extreme programming.
 * Documentation support through [markment](http://falcao.it/markment)
 
 
-## Getting Started
+## Getting Started in 5 steps
 
 1. Fork the project
 2. Clone from your own copy
 3. Run the `install-wizard.sh` script, which will install the dependencies in your environment
-
-3. Install dependencies through [curdling](http://clarete.li/curdling)
-4. Rename the main module from `bong` to `whateveryouwant`
-5. Run the `rename-inline` script with a mixed case name of your project:
-
-```bash
-rename-inline Bong WhateverYouWant
-```
-
-6. Run the tests to make sure everything went well
-7. Disco!
+4. Run the tests to make sure everything went well
+5. Disco!
