@@ -1,0 +1,17 @@
+*.py[cod]
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+.DS_Store
+local-db.sqlite
+
+.coverage
+*flymake*
+*#*
+.*#*
+*.#*
+.*.#*
+docs/source_build/*
+_public/
