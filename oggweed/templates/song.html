@@ -2,20 +2,22 @@
 
 {% block body %}
 <body>
+  <header>
+    <a href="/">Home</a>
+  </header>
   <footer>
-  <h1>Robots have problems, too</h1>
-  <h2>Gabriel Falcão</h2>
+    <h4>URL: "{{ song.url }}"</h4>
   </footer>
 
-<audio id="player">
-  <source src="{{ static_url('audio/rhept.ogg') }}" type="audio/ogg" />
+  <audio id="player">
+    <source src="{{ song.url }}" type="audio/ogg" />
 Your browser does not support the audio element.
-</audio>
+  </audio>
 
   <div class="play"><span class="play-button"></span></div>
 
-    <script src="{{ static_url('js/jquery.min.js') }}"></script>
-    <script src="{{ static_url('js/bootstrap.min.js') }}"></script>
-    <script src="{{ static_url('js/oggweed.js') }}"></script>
+  <script src="{{ static_url('js/jquery.min.js') }}"></script>
+  <script src="{{ static_url('js/bootstrap.min.js') }}"></script>
+  <script src="{{ static_url('js/oggweed.js') }}"></script>
 </body>
 {% endblock %}

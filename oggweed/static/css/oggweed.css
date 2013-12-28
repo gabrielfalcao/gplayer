@@ -1,13 +1,21 @@
-@import url(http://fonts.googleapis.com/css?family=Inder|Chau+Philomene+One|Roboto|Share+Tech+Mono);
+@import url(http://fonts.googleapis.com/css?family=The+Girl+Next+Door);
 
-html, body {
-  background: #333;
-  color: #fff;
-  font-family: "Chau Philomene One";
+body, html, h1, h2, h3, h4, h5, h6 {
+  font-family: "The Girl Next Door";
 }
-h1, h2, h3, h4, h5, h6 {
-  color: #fff;
-  font-family: "Chau Philomene One";
+
+.oggweed-logo {
+  background: url(logo.png) no-repeat;
+  display: inline;
+  float: left;
+  padding-bottom: 100px;
+  width: 500px;
+  background-position: 50px -10px;
+  font-size: 36px;
+}
+
+form {
+  font-size: 36px;
 }
 span.play-button {
   height: 80px;
@@ -45,7 +53,7 @@ span:after {
   background: transparent;
   border: 20px transparent solid;
   border-right-width: 0;
-  border-left-color: #ffffff;
+  border-left-color: #333;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -59,7 +67,7 @@ span:after {
   background: transparent;
   border: 20px transparent solid;
   border-right-width: 0;
-  border-left-color: #ffffff;
+  border-left-color: #333;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -75,7 +83,7 @@ span:after {
 }
 .play.active span:before {
   content: '';
-  border: 5px #ffffff solid;
+  border: 5px #333 solid;
   border-top-width: 40px;
   border-bottom-width: 0;
   left: 37.5%;
@@ -87,7 +95,7 @@ span:after {
 }
 .play.active span:after {
   content: '';
-  border: 5.333333333333333px #ffffff solid;
+  border: 5.333333333333333px #333 solid;
   border-bottom-width: 0;
   border-top-width: 40px;
   left: 62.5%;

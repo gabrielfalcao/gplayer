@@ -67,5 +67,9 @@ def upload():
 
 @module.route('/song/<token>')
 def song(token):
-    song = Song.from_token(token)
+    try:
+        song = Song.from_token(token)
+    except:
+        return redirect('/')
+
     return render_template('song.html', song=song)

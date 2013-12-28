@@ -64,6 +64,8 @@ class Song(object):
         'converted_at',
         'finalized_at',
         'day',
+        'metadata',
+        'url',
         'token',
     )
 
@@ -83,15 +85,17 @@ class Song(object):
 
     def __init__(self, **kw):
         self.__data__ = {}
+        for key in self.keys:
+            setattr(self, key, None)
+
         for key, value in kw.items():
-            if key in self.keys:
-                self.__data__[key] = value
-                setattr(self, key, value)
+            self.__data__[key] = value
+            setattr(self, key, value)
 
     def as_dict(self):
         d = {}
         for k in self.keys:
-            d[k] = getattr(self, k, None)
+           d[k] = getattr(self, k, None)
 
         return d
 
@@ -101,10 +105,16 @@ class Song(object):
     def save(self):
         redis = get_redis_connection()
 
-        keys_to_push = [
-            "list:songs:all",
-            "list:songs:{0}".format(self.day)
-        ]
+        if not self.finalized_at:
+            keys_to_push = [
+                "list:songs:all",
+                "list:songs:{0}".format(self.day)
+            ]
+        else:
+            keys_to_push = [
+                "list:songs:ready",
+            ]
+
         for key in keys_to_push:
             redis.rpush(key, "song:{0}".format(self.token))
 
