@@ -16,3 +16,4 @@ local-db.sqlite
 docs/source_build/*
 _public/
 bower_components/
+gplayer/_uploads/*
