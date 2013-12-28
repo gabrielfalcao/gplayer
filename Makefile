@@ -29,7 +29,7 @@ check:
 
 
 local-migrate-forward:
-	@[ "$(reset)" == "yes" ] && echo "drop database gplayer;create database gplayer" | mysql -uroot || echo "Running new migrations..."
+	@[ "$(reset)" == "yes" ] && echo "drop database oggweed;create database oggweed" | mysql -uroot || echo "Running new migrations..."
 	@alembic upgrade head
 
 migrate-forward:
@@ -40,7 +40,7 @@ local-migrate-back:
 	@alembic downgrade -1
 
 db:
-	@echo "drop database if exists gplayer ;create database gplayer" | mysql -uroot
+	@echo "drop database if exists oggweed ;create database oggweed" | mysql -uroot
 	python manage.py db
 
 docs:
@@ -49,16 +49,16 @@ docs:
 
 static:
 	bower install
-	@mkdir -p gplayer/static/{js,css,fonts}
+	@mkdir -p oggweed/static/{js,css,fonts}
 
-	cp bower_components/angular/angular.min.js.map         gplayer/static/js
-	cp bower_components/angular/angular.min.js             gplayer/static/js
-	cp bower_components/jquery/jquery.min.js               gplayer/static/js
-	cp bower_components/jquery/jquery.min.map              gplayer/static/js
-	cp bower_components/bootstrap/dist/js/bootstrap.min.js gplayer/static/js
+	cp bower_components/angular/angular.min.js.map         oggweed/static/js
+	cp bower_components/angular/angular.min.js             oggweed/static/js
+	cp bower_components/jquery/jquery.min.js               oggweed/static/js
+	cp bower_components/jquery/jquery.min.map              oggweed/static/js
+	cp bower_components/bootstrap/dist/js/bootstrap.min.js oggweed/static/js
 
-	cp bower_components/bootstrap/dist/fonts/*             gplayer/static/fonts
+	cp bower_components/bootstrap/dist/fonts/*             oggweed/static/fonts
 
-	cp bower_components/bootstrap/dist/css/*.min.css       gplayer/static/css
+	cp bower_components/bootstrap/dist/css/*.min.css       oggweed/static/css
 
-	cp bower_components/dropzone/downloads/dropzone.min.js gplayer/static/js
+	cp bower_components/dropzone/downloads/dropzone.min.js oggweed/static/js

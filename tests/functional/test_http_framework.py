@@ -1,11 +1,11 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# Copyright © 2013 GPlayer LLC
+# Copyright © 2013 OggWeed LLC
 #
 from __future__ import unicode_literals
 from mock import patch
-from gplayer import settings
-from gplayer.framework.http import (
+from oggweed import settings
+from oggweed.framework.http import (
     absolute_url,
     ssl_absolute_url,
     set_cors_into_headers,
@@ -64,7 +64,7 @@ def test_ssl_absolute_url():
     url.should.equal('https://mywebsite.com/foo/bar')
 
 
-@patch('gplayer.framework.http.request')
+@patch('oggweed.framework.http.request')
 def test_set_cors_into_headers(request):
     ("set_cors_into_headers should get `allow-headers` and `allow-methods` from the request")
     request.headers = {}
@@ -89,7 +89,7 @@ def test_set_cors_into_headers(request):
     response_headers.should.have.key('Access-Control-Allow-Headers').being.equal('Content-Type,X-Foo-Bar')
 
 
-@patch('gplayer.framework.http.request')
+@patch('oggweed.framework.http.request')
 def test_json_representation(request):
     ("json_representation should take raw python data to be serialized, "
      "status code and headers and return a CORS-ready json-serialized response")
@@ -111,8 +111,8 @@ def test_json_representation(request):
     response.status_code.should.equal(200)
 
 
-@patch('gplayer.framework.http.request')
-@patch('gplayer.framework.http.current_app')
+@patch('oggweed.framework.http.request')
+@patch('oggweed.framework.http.current_app')
 def test_json_resource_has_options_method(current_app, request):
     ("JSONResource should have the method `options` implemented by default and enabling cors")
     request.headers = {}

@@ -1,11 +1,11 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# Copyright © 2013 GPlayer LLC
+# Copyright © 2013 OggWeed LLC
 #
 import json
 from datetime import datetime, date, time
 
-from gplayer.framework.formats.json import json_converter, loads, dumps
+from oggweed.framework.formats.json import json_converter, loads, dumps
 
 
 

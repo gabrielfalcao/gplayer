@@ -1,14 +1,14 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# Copyright © 2013 GPlayer LLC
+# Copyright © 2013 OggWeed LLC
 #
 from __future__ import unicode_literals
 import logging
 from mock import patch, Mock, call
-from gplayer.framework.core import Application, ErrorHandlers
+from oggweed.framework.core import Application, ErrorHandlers
 
 
-@patch('gplayer.framework.core.Flask')
+@patch('oggweed.framework.core.Flask')
 def test_application_has_flask_app(Flask):
     ("Application should contain a flask app")
 
@@ -19,15 +19,15 @@ def test_application_has_flask_app(Flask):
     app = Application(test_path)
 
     # Then a flask app must have been created
-    Flask.assert_called_once_with('gplayer.framework.core')
+    Flask.assert_called_once_with('oggweed.framework.core')
 
     # And the flask app instance must be available as `flask_app`
     # inside of the Application instance
     app.flask_app.should.equal(Flask.return_value)
 
 
-@patch('gplayer.framework.core.ErrorHandlers')
-@patch('gplayer.framework.core.Flask')
+@patch('oggweed.framework.core.ErrorHandlers')
+@patch('oggweed.framework.core.Flask')
 def test_application_enable_error_handlers(Flask, ErrorHandlers):
     ("Application.enable_error_handlers() should register a error handler for 500")
 
@@ -47,7 +47,7 @@ def test_application_enable_error_handlers(Flask, ErrorHandlers):
     app.add_error_handler(500, handler_for.internal_error)
 
 
-@patch('gplayer.framework.core.Flask')
+@patch('oggweed.framework.core.Flask')
 def test_add_error_handler(Flask):
     ("Application.add_error_handler registers flask error "
      "handler for the given status code and callback")
@@ -69,7 +69,7 @@ def test_add_error_handler(Flask):
     handler.assert_called_once_with(callback)
 
 
-@patch('gplayer.framework.core.Flask')
+@patch('oggweed.framework.core.Flask')
 def test_application_must_be_callable(Flask):
     ("Application must be callable and forward the call to the flask app")
 
@@ -86,8 +86,8 @@ def test_application_must_be_callable(Flask):
     app.flask_app.assert_called_once_with('some', arguments=True)
 
 
-@patch('gplayer.framework.core.RedisSessionInterface')
-@patch('gplayer.framework.core.Flask')
+@patch('oggweed.framework.core.RedisSessionInterface')
+@patch('oggweed.framework.core.Flask')
 def test_application_enable_session(Flask, RedisSessionInterface):
     ("Application.enable_session() should set the session_interface "
      "to be the RedisSessionInterface")
@@ -102,7 +102,7 @@ def test_application_enable_session(Flask, RedisSessionInterface):
     app.flask_app.session_interface.should.equal(RedisSessionInterface.return_value)
 
 
-@patch('gplayer.framework.core.Flask')
+@patch('oggweed.framework.core.Flask')
 def test_application_enable_session_with_custom_interface(Flask):
     ("Application.enable_session() should can take the session interface as argument")
 
@@ -120,8 +120,8 @@ def test_application_enable_session_with_custom_interface(Flask):
 
 
 
-@patch('gplayer.framework.core.AssetsManager')
-@patch('gplayer.framework.core.Flask')
+@patch('oggweed.framework.core.AssetsManager')
+@patch('oggweed.framework.core.Flask')
 def test_application_enable_assets(Flask, AssetsManager):
     ("Application.enable_assets() should instantiate an AssetsManager and create the bundles")
 
@@ -139,8 +139,8 @@ def test_application_enable_assets(Flask, AssetsManager):
 
 
 
-@patch('gplayer.framework.core.Manager')
-@patch('gplayer.framework.core.Flask')
+@patch('oggweed.framework.core.Manager')
+@patch('oggweed.framework.core.Flask')
 def test_application_enable_commands(Flask, Manager):
     ("Application.enable_commands() should take a list of "
      "tuples containing a label and a command instance")
@@ -161,8 +161,8 @@ def test_application_enable_commands(Flask, Manager):
     app.commands_manager.add_command.assert_called_once_with('label1', command1)
 
 
-@patch('gplayer.framework.core.Manager')
-@patch('gplayer.framework.core.Flask')
+@patch('oggweed.framework.core.Manager')
+@patch('oggweed.framework.core.Flask')
 def test_application_enable_commands_after_enabling_assets(Flask, Manager):
     ("Application.enable_commands() should take a list of "
      "tuples containing a label and a command instance")
@@ -184,7 +184,7 @@ def test_application_enable_commands_after_enabling_assets(Flask, Manager):
     app.commands_manager.add_command.assert_called_once_with('label1', command1)
 
 
-@patch('gplayer.framework.core.Flask')
+@patch('oggweed.framework.core.Flask')
 def test_application_register_blueprint(Flask):
     ("Application.register_blueprint() should add the blueprint to the main app")
 
@@ -201,7 +201,7 @@ def test_application_register_blueprint(Flask):
     app.flask_app.register_blueprint.assert_called_once_with(blueprint)
 
 
-@patch('gplayer.framework.core.Flask')
+@patch('oggweed.framework.core.Flask')
 def test_application_run_cli_without_commands(Flask):
     ("Application.run_cli() should raise a RuntimeError "
      "if the commands weren't enabled previously")
@@ -218,7 +218,7 @@ def test_application_run_cli_without_commands(Flask):
                                  'after the `enable_commands` method was called.')
 
 
-@patch('gplayer.framework.core.Flask')
+@patch('oggweed.framework.core.Flask')
 def test_application_run_cli(Flask):
     ("Application.run_cli() should run the commands managers")
 
@@ -233,8 +233,8 @@ def test_application_run_cli(Flask):
     app.commands_manager.run.assert_called_once_with()
 
 
-@patch('gplayer.framework.core.log')
-@patch('gplayer.framework.core.Flask')
+@patch('oggweed.framework.core.log')
+@patch('oggweed.framework.core.Flask')
 def test_setup_handler_for_logger(Flask, log):
     ("Application.setup_handler_for_logger should add a pretty handler "
      "and set the level to the given level")
@@ -262,7 +262,7 @@ def test_setup_handler_for_logger(Flask, log):
     logger.setLevel.assert_called_once_with(logging.INFO)
 
 
-@patch('gplayer.framework.core.Flask')
+@patch('oggweed.framework.core.Flask')
 def test_setup_logging_does_nothing_in_test_mode(Flask):
     ("Application.setup_logging does nothing when in testing mode")
 
@@ -277,8 +277,8 @@ def test_setup_logging_does_nothing_in_test_mode(Flask):
     app.setup_logging(output, 'Any Level').should.be.none
 
 
-@patch('gplayer.framework.core.log')
-@patch('gplayer.framework.core.Flask')
+@patch('oggweed.framework.core.log')
+@patch('oggweed.framework.core.Flask')
 def test_setup_logging(Flask, log):
     ("Application.setup_logging sets up")
 
@@ -301,27 +301,27 @@ def test_setup_logging(Flask, log):
 
     # Then a logger should have been retrieved for each name in the settings file
     log.get_logger.assert_has_calls([
-        call('gplayer'),
-        call('gplayer.api.models'),
-        call('gplayer.api.resources'),
-        call('gplayer.framework.http'),
-        call('gplayer.framework.db'),
+        call('oggweed'),
+        call('oggweed.api.models'),
+        call('oggweed.api.resources'),
+        call('oggweed.framework.http'),
+        call('oggweed.framework.db'),
     ])
 
     # And setup_handler_for_logger should have been called for each handler
     app.setup_handler_for_logger.assert_has_calls([
-        call('handler for [gplayer]', output, logging.WARNING),
-        call('handler for [gplayer.api.models]', output, logging.WARNING),
-        call('handler for [gplayer.api.resources]', output, logging.WARNING),
-        call('handler for [gplayer.framework.http]', output, logging.WARNING),
-        call('handler for [gplayer.framework.db]', output, logging.WARNING),
+        call('handler for [oggweed]', output, logging.WARNING),
+        call('handler for [oggweed.api.models]', output, logging.WARNING),
+        call('handler for [oggweed.api.resources]', output, logging.WARNING),
+        call('handler for [oggweed.framework.http]', output, logging.WARNING),
+        call('handler for [oggweed.framework.db]', output, logging.WARNING),
 
    ])
 
 
-@patch('gplayer.framework.core.os')
-@patch('gplayer.framework.core.RedisSessionInterface')
-@patch('gplayer.framework.core.Flask')
+@patch('oggweed.framework.core.os')
+@patch('oggweed.framework.core.RedisSessionInterface')
+@patch('oggweed.framework.core.Flask')
 def test_from_env(Flask, RedisSessionInterface, os):
     ("Application.from_env should create app from environment variable")
 
@@ -349,7 +349,7 @@ def test_from_env(Flask, RedisSessionInterface, os):
     app.enable_error_handlers.assert_called_once_with()
 
 
-@patch('gplayer.framework.core.render_template')
+@patch('oggweed.framework.core.render_template')
 def test_error_handlers_internal_error(render_template):
     ("ErrorHandlers.internal_error should take an exception and "
      "render the 500 template passing `exception` to the context")

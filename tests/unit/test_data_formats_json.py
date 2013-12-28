@@ -1,12 +1,12 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# Copyright © 2013 GPlayer LLC
+# Copyright © 2013 OggWeed LLC
 #
 import json
 from mock import patch
 from datetime import datetime, date, time
 
-from gplayer.framework.formats.json import json_converter, loads, dumps
+from oggweed.framework.formats.json import json_converter, loads, dumps
 
 
 
@@ -63,7 +63,7 @@ def test_json_converter_should_yield_string():
     serialized.should.equal('"COOL"')
 
 
-@patch('gplayer.framework.formats.json.json')
+@patch('oggweed.framework.formats.json.json')
 def test_loads_is_proxy_to_real_json_loads(json):
     ("framework.formats.json.loads should be a proxy to json.loads")
 
@@ -71,8 +71,8 @@ def test_loads_is_proxy_to_real_json_loads(json):
     json.loads.assert_called_once_with(1, foo='bar')
 
 
-@patch('gplayer.framework.formats.json.json')
-@patch('gplayer.framework.formats.json.json_converter')
+@patch('oggweed.framework.formats.json.json')
+@patch('oggweed.framework.formats.json.json_converter')
 def test_dumps_sets_default_json_converter(json_converter, json):
     ("framework.formats.json.loads should be a proxy to json.loads")
 

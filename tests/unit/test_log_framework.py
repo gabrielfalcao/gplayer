@@ -1,18 +1,18 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# Copyright © 2013 GPlayer LLC
+# Copyright © 2013 OggWeed LLC
 #
 from __future__ import unicode_literals
 from mock import patch, Mock
-from gplayer.framework.log import (
+from oggweed.framework.log import (
     ColorFormatter,
     get_pretty_log_handler,
     get_logger,
 )
 
 
-@patch('gplayer.framework.log.settings')
-@patch('gplayer.framework.log.logging')
+@patch('oggweed.framework.log.settings')
+@patch('oggweed.framework.log.logging')
 def test_get_logger(logging, settings):
     ("log.get_logger should be a simple proxy to logging.getLogger")
     settings.TESTING = False
@@ -25,9 +25,9 @@ def test_get_logger(logging, settings):
 
 
 
-@patch('gplayer.framework.log.settings')
-@patch('gplayer.framework.log.logging')
-@patch('gplayer.framework.log.ColorFormatter')
+@patch('oggweed.framework.log.settings')
+@patch('oggweed.framework.log.logging')
+@patch('oggweed.framework.log.ColorFormatter')
 def test_get_pretty_log_handler(ColorFormatter, logging, settings):
     ("get_pretty_log_handler takes a file descriptor and "
      "returns a log handler that uses the ColorFormatter")
@@ -61,8 +61,8 @@ def test_color_formatter_colors():
     ColorFormatter.COLORS.should.have.key('FATAL').being.equal('\033[36m')
 
 
-@patch('gplayer.framework.log.logging')
-@patch('gplayer.framework.log.datetime')
+@patch('oggweed.framework.log.logging')
+@patch('oggweed.framework.log.datetime')
 def test_color_formatter_format(datetime, logging):
     ("ColorFormatter.format when formatting was successful should "
      "get the color for the level name and format with time")

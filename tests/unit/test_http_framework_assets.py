@@ -1,13 +1,13 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# Copyright © 2013 GPlayer LLC
+# Copyright © 2013 OggWeed LLC
 #
 from __future__ import unicode_literals
 from mock import patch, Mock
-from gplayer.framework.http.assets import AssetsManager
+from oggweed.framework.http.assets import AssetsManager
 
 
-@patch('gplayer.framework.http.assets.Environment')
+@patch('oggweed.framework.http.assets.Environment')
 def test_assets_manager(Environment):
     ("AssetsManager should have a flask assets Environment "
      "setup upon instantiation")

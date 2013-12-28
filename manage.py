@@ -6,7 +6,7 @@
     Manager module
 """
 
-from gplayer.boot import application
+from oggweed.boot import application
 
 if __name__ == "__main__":
     application.run_cli()

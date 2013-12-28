@@ -3,7 +3,7 @@
 #
 from __future__ import unicode_literals
 from mock import patch
-from gplayer.framework.handy.functions import slugify, empty, now
+from oggweed.framework.handy.functions import slugify, empty, now
 
 
 
@@ -14,7 +14,7 @@ def test_slufify():
     slugify('Gabriel Falcão').should.equal('gabriel-falcao')
 
 
-@patch('gplayer.framework.handy.functions.datetime')
+@patch('oggweed.framework.handy.functions.datetime')
 def test_now_proxies_to_datetime_utcnow(datetime):
     ("api.models.now returns datetime.utcnow()")
 

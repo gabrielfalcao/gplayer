@@ -1,4 +1,4 @@
-# GPlayer
+# OggWeed
 
 A simple web player that converts your aif files, for free.
 

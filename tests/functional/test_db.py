@@ -4,7 +4,7 @@ import httpretty
 from .base import specification, User
 from datetime import datetime, date, time
 from decimal import Decimal
-from gplayer.framework.db import (
+from oggweed.framework.db import (
     Model, db, MetaData,
     InvalidModelDeclaration,
     InvalidColumnName,

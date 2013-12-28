@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# Copyright © 2013 GPlayer LLC
+# Copyright © 2013 OggWeed LLC
 #
 
 import json
@@ -8,7 +8,7 @@ import sqlalchemy as db
 from mock import patch, call, Mock
 from datetime import datetime, date, time
 from decimal import Decimal
-from gplayer.framework.db import (
+from oggweed.framework.db import (
     Model,
     Manager,
     InvalidModelDeclaration,
@@ -478,7 +478,7 @@ def test_manager_find_one_by():
     result.should.equal("the results")
 
 
-@patch('gplayer.framework.db.partial')
+@patch('oggweed.framework.db.partial')
 def test_manager_find_by(partial):
     ("Manager#find_one_by finds all records matching the keyword arguments.")
 
@@ -743,7 +743,7 @@ def test_query_by():
         'ORDER BY dummy_user_model.id DESC')
 
 
-@patch('gplayer.framework.db.StrictRedis')
+@patch('oggweed.framework.db.StrictRedis')
 def test_get_redis_connection(StrictRedis):
     ("get_redis_connection() should return a redis connection from the setting `REDIS_URI`")
 
@@ -757,7 +757,7 @@ def test_get_redis_connection(StrictRedis):
     )
 
 
-@patch('gplayer.framework.db.engine')
+@patch('oggweed.framework.db.engine')
 def test_model_create_calls_manager_with_default_engine(engine):
     ("Model.create() should be a proxy to Model#using(engine).create()")
 
@@ -778,7 +778,7 @@ def test_model_create_calls_manager_with_default_engine(engine):
     ManagedModel.using.assert_called_once_with(engine)
 
 
-@patch('gplayer.framework.db.engine')
+@patch('oggweed.framework.db.engine')
 def test_model_get_or_create_calls_manager_with_default_engine(engine):
     ("Model.get_or_create() should be a proxy to Model#using(engine).get_or_create()")
 
@@ -799,7 +799,7 @@ def test_model_get_or_create_calls_manager_with_default_engine(engine):
     ManagedModel.using.assert_called_once_with(engine)
 
 
-@patch('gplayer.framework.db.engine')
+@patch('oggweed.framework.db.engine')
 def test_model_query_by_calls_manager_with_default_engine(engine):
     ("Model.query_by() should be a proxy to Model#using(engine).query_by()")
 
@@ -820,7 +820,7 @@ def test_model_query_by_calls_manager_with_default_engine(engine):
     ManagedModel.using.assert_called_once_with(engine)
 
 
-@patch('gplayer.framework.db.engine')
+@patch('oggweed.framework.db.engine')
 def test_model_find_one_by_calls_manager_with_default_engine(engine):
     ("Model.find_one_by() should be a proxy to Model#using(engine).find_one_by()")
 
@@ -841,7 +841,7 @@ def test_model_find_one_by_calls_manager_with_default_engine(engine):
     ManagedModel.using.assert_called_once_with(engine)
 
 
-@patch('gplayer.framework.db.engine')
+@patch('oggweed.framework.db.engine')
 def test_model_find_by_calls_manager_with_default_engine(engine):
     ("Model.find_by() should be a proxy to Model#using(engine).find_by()")
 
@@ -862,7 +862,7 @@ def test_model_find_by_calls_manager_with_default_engine(engine):
     ManagedModel.using.assert_called_once_with(engine)
 
 
-@patch('gplayer.framework.db.engine')
+@patch('oggweed.framework.db.engine')
 def test_model_all_calls_manager_with_default_engine(engine):
     ("Model.all() should be a proxy to Model#using(engine).all()")
 

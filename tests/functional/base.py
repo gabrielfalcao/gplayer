@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# Copyright © 2013 GPlayer LLC
+# Copyright © 2013 OggWeed LLC
 #
 from __future__ import unicode_literals
 
@@ -11,8 +11,8 @@ from datetime import datetime
 from sure import scenario
 from freezegun import freeze_time
 
-from gplayer.server import application
-from gplayer.framework.db import metadata, engine, Model, get_redis_connection
+from oggweed.server import application
+from oggweed.framework.db import metadata, engine, Model, get_redis_connection
 
 
 time_frozen = freeze_time("2002-04-20 04:20:00")
@@ -47,13 +47,13 @@ def prepare_db(context):
 specification = scenario([prepare_app, prepare_db])
 
 def api_specification(role_name, email='foo@bar.com', password='123'):
-    from gplayer.api.models import User
+    from oggweed.api.models import User
     def prepare_token(context):
         context.user = User.create(email=email, password=password)
         context.user.created_at = datetime(2002, 4, 20, 4, 20)
         context.user.save()
         context.user.roles.add(role_name)
         context.token = context.user.generate_token()
-        context.headers = {'X-GPlayer-Token': context.token}
+        context.headers = {'X-OggWeed-Token': context.token}
 
     return scenario([prepare_app, prepare_db, prepare_token])
