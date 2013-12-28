@@ -15,12 +15,12 @@
     <link href="{{ static_url('css/bootstrap.min.css') }}" rel="stylesheet">
 
     <link href="{{ static_url('css/gplayer.css') }}" rel="stylesheet">
+    {% block head %}{% endblock %}
   </head>
 
 {% block body %}
   <body>
     <div class="container">
-
       <!-- Static navbar -->
       <div class="navbar navbar-default" role="navigation">
         <div class="navbar-header">
@@ -30,7 +30,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">Project name</a>
+          <a class="navbar-brand" href="#">Bong</a>
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">

@@ -1,21 +1,25 @@
 {% extends "base.html" %}
-
+{% block head %}
+<style type="text/css" media="screen">
+form.dropzone {
+  border: 2px solid #FFF;
+  height: 400px;
+  text-align:center;
+  padding-top:200px;
+}
+</style>
+{% endblock %}
 {% block body %}
 <body>
-  <footer>
-  <h1>Robots have problems, too</h1>
-  <h2>Gabriel Falcão</h2>
-  </footer>
-
-<audio id="player">
-  <source src="{{ static_url('audio/rhept.ogg') }}" type="audio/ogg" />
-Your browser does not support the audio element.
-</audio>
-
-  <div class="play"><span class="play-button"></span></div>
-
-    <script src="{{ static_url('js/jquery.min.js') }}"></script>
-    <script src="{{ static_url('js/bootstrap.min.js') }}"></script>
-    <script src="{{ static_url('js/gplayer.js') }}"></script>
+  <div class="container">
+    <h2>Aiff</h2>
+    <form action="/upload"
+          class="dropzone"
+          id="upload-aiff"></form>
+  </div>
+  <script src="{{ static_url('js/jquery.min.js') }}"></script>
+  <script src="{{ static_url('js/bootstrap.min.js') }}"></script>
+  <script src="{{ static_url('js/dropzone.min.js') }}"></script>
+  <script src="{{ static_url('js/upload.js') }}"></script>
 </body>
 {% endblock %}

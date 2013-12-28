@@ -60,3 +60,5 @@ static:
 	cp bower_components/bootstrap/dist/fonts/*             gplayer/static/fonts
 
 	cp bower_components/bootstrap/dist/css/*.min.css       gplayer/static/css
+
+	cp bower_components/dropzone/downloads/dropzone.min.js gplayer/static/js

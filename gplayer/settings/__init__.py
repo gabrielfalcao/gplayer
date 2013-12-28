@@ -57,3 +57,5 @@ LOGGER_NAMES = [
 
 API_TOKEN_EXPIRATION_TIME = 60 * 60 * 12  # 12 hours in seconds
 SALT = 'UXLcFCGwG_7tgC_6'
+UPLOAD_PATH = LOCAL_FILE('_uploads')
+UPLOADED_FILE = lambda *path: join(UPLOAD_PATH, *path)

@@ -20,6 +20,7 @@ from gplayer.server import application
 from gplayer.framework.commands.core import (
     RunServer,
     Shell,
+    RunWorker,
 )
 
 # Importing db commands
@@ -43,6 +44,7 @@ application.enable_commands([
     # Testing-related commands
     ('run', RunServer(application)),
     ('shell', Shell(application)),
+    ('converter-pipeline', RunWorker(application)),
 
     # DB commands
     ('db', CreateDB(application)),
